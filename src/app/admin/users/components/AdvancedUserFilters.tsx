@@ -102,18 +102,16 @@ export function AdvancedUserFilters({
       {/* Mobile: Collapsible header */}
       {isMobile && (
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-          <CollapsibleTrigger>
-            <button className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-900">🔎 Filters</span>
-                {activeFilterCount > 0 && (
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                    {activeFilterCount}
-                  </span>
-                )}
-              </div>
-              <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
+          <CollapsibleTrigger className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 border-none bg-transparent text-left">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium text-gray-900">🔎 Filters</span>
+              {activeFilterCount > 0 && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  {activeFilterCount}
+                </span>
+              )}
+            </div>
+            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
           </CollapsibleTrigger>
           <CollapsibleContent className="border-t border-gray-200 p-4 space-y-4">
             <FilterContent
