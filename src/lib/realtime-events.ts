@@ -13,7 +13,13 @@ export const ADMIN_REALTIME_EVENTS = [
   'booking-deleted',
   'system_alert',
   'heartbeat',
-  'ready'
+  'ready',
+  'user-created',
+  'user-updated',
+  'user-deleted',
+  'role-updated',
+  'permission-changed',
+  'user-management-settings-updated'
 ] as const
 
 export type AdminRealtimeEventType = typeof ADMIN_REALTIME_EVENTS[number] | 'all'
