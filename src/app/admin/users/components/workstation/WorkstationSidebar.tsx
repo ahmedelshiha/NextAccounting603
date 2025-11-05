@@ -45,7 +45,13 @@ export const WorkstationSidebar = memo(function WorkstationSidebar({
    */
   const handleResetClick = useCallback(() => {
     if (onFiltersChange) {
-      onFiltersChange({})
+      onFiltersChange({
+        search: '',
+        role: '',
+        status: '',
+        department: '',
+        dateRange: 'all',
+      })
     }
     if (onReset) {
       onReset()
