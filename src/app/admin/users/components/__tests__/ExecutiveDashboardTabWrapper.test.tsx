@@ -23,7 +23,11 @@ describe('ExecutiveDashboardTabWrapper', () => {
       config: {}
     })
 
-    render(<ExecutiveDashboardTabWrapper />)
+    render(
+      <UsersContextProvider>
+        <ExecutiveDashboardTabWrapper />
+      </UsersContextProvider>
+    )
 
     expect(screen.getByTestId('admin-workbench')).toBeInTheDocument()
     expect(screen.queryByTestId('legacy-dashboard')).not.toBeInTheDocument()
@@ -37,7 +41,11 @@ describe('ExecutiveDashboardTabWrapper', () => {
       config: {}
     })
 
-    render(<ExecutiveDashboardTabWrapper />)
+    render(
+      <UsersContextProvider>
+        <ExecutiveDashboardTabWrapper />
+      </UsersContextProvider>
+    )
 
     expect(screen.getByTestId('legacy-dashboard')).toBeInTheDocument()
     expect(screen.queryByTestId('admin-workbench')).not.toBeInTheDocument()
@@ -51,7 +59,11 @@ describe('ExecutiveDashboardTabWrapper', () => {
       config: {}
     })
 
-    render(<ExecutiveDashboardTabWrapper />)
+    render(
+      <UsersContextProvider>
+        <ExecutiveDashboardTabWrapper />
+      </UsersContextProvider>
+    )
 
     expect(screen.getByTestId('legacy-dashboard')).toBeInTheDocument()
   })
@@ -64,7 +76,11 @@ describe('ExecutiveDashboardTabWrapper', () => {
       config: { rolloutPercentage: 10 }
     })
 
-    render(<ExecutiveDashboardTabWrapper />)
+    render(
+      <UsersContextProvider>
+        <ExecutiveDashboardTabWrapper />
+      </UsersContextProvider>
+    )
 
     expect(screen.getByTestId('legacy-dashboard')).toBeInTheDocument()
   })
