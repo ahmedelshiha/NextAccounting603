@@ -112,7 +112,6 @@ export default function UsersTableWrapper({
   }, [updateUser])
 
   const handleDeleteUser = useCallback(async (userId: string) => {
-    if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) return
     try {
       await deleteUserApi(userId)
       toast.success('User deleted')
