@@ -76,9 +76,12 @@ export const UsersTable = memo(function UsersTable({
         onSelect={handleSelectUser}
         onViewProfile={onViewProfile}
         onEditInline={handleEditInline}
+        onDeleteUser={onDeleteUser}
+        onResetPassword={onResetPassword}
+        onRoleChange={onRoleChange}
       />
     ),
-    [selectedUserIds, handleSelectUser, onViewProfile, handleEditInline]
+    [selectedUserIds, handleSelectUser, onViewProfile, handleEditInline, onDeleteUser, onResetPassword, onRoleChange]
   )
 
   return (
