@@ -124,7 +124,7 @@ This document provides:
 - ✅ **All interactive elements** (buttons, dropdowns, selections)
 - ✅ **Full component specifications** (exact styling for each component)
 - ✅ **Phased implementation plan** (5 phases, 27 specific tasks)
-- ✅ **Production deployment checklist** (with feature flag strategy)
+- ��� **Production deployment checklist** (with feature flag strategy)
 
 ---
 
@@ -155,7 +155,7 @@ This document provides:
 │                                  │  │ Mik│mik@│Adm│Active│  │
 │  Filters                         │  │ Sop│sop@│View│Inact│  │
 │  ─────────────────────────────   │  └────────────────────────┘  │
-│  Role:   [All ��]                │                              │
+│  Role:   [All ▼]                │                              │
 │  Status: [All ▼]                │                              │
 │                                  │                              │
 ├──────────────────────────────────┴──────────────────────────────┤
@@ -489,7 +489,7 @@ This document provides:
 │                                                         │
 │  Charts coming soon...                                  │
 │                                                         │
-├────���────────────────────────────────────────────────────┤
+├────�����────────────────────────────────────────────────────┤
 │ [Total Users: 6] [Pending: 0] [In Progress: 6] [Due: 0] │ ← 4 cards, dark bg
 ├──────────────────────────────────────────────────��──────┤
 │ User Directory (minimal rows shown)                      │
@@ -663,7 +663,7 @@ This document provides:
 | **Row Selection** | Checkboxes present | Checkboxes visible | ⚠️ Visibility | Ensure visible |
 | **Row Hover** | Dark hover effect | Light hover effect | ❌ Color mismatch | Change hover color |
 | **Status Badge Colors** | Dark theme | Light theme (green/red/gray) | ❌ Color mismatch | Update badge colors |
-| **Actions Column** | Present (•••) | Present (•••) | ✅ Same | No change |
+| **Actions Column** | Present (��••) | Present (•••) | ✅ Same | No change |
 | **Table Border** | Dark border | Light border (#e5e7eb) | ❌ Color mismatch | Change border color |
 | **Table Background** | Dark | White | ❌ Color mismatch | Change background |
 
@@ -2074,12 +2074,23 @@ This section documents the User Directory table features analyzed from the targe
      - Accessibility: `aria-label="More actions"` on trigger button
 
 8. **Verify View Profile Interaction**
-   - [ ] Clicking "View Profile" opens UserProfileDialog
-   - [ ] Dialog receives correct user data from context
-   - [ ] Dialog displays user information in tabs (Overview, Details, Activity, Settings)
-   - [ ] Dialog can be closed without changes
-   - [ ] Dialog properly sets context state (selectedUser, profileOpen)
-   - **File:** `src/app/admin/users/components/UserProfileDialog/index.tsx`
+   - [x] Clicking "View Profile" opens UserProfileDialog
+   - [x] Dialog receives correct user data from context
+   - [x] Dialog displays user information in tabs (Overview, Details, Activity, Settings)
+   - [x] Dialog can be closed without changes
+   - [x] Dialog properly sets context state (selectedUser, profileOpen)
+   - **File:** `src/app/admin/users/components/UserProfileDialog/index.tsx` & `UsersTableWrapper.tsx`
+   - **Status:** ✅ COMPLETED - Fixed earlier
+   - **Implementation Details:**
+     - Trigger: "View Profile" dropdown menu item in UserRow
+     - Handler flow: `handleViewProfile()` → `context.setSelectedUser(user)` + `context.setProfileOpen(true)`
+     - Dialog component: `UserProfileDialog` (controlled by context state)
+     - Dialog display: Opens when `profileOpen={true}` in context
+     - User data: Passed via `selectedUser` from context
+     - Tabs: Overview, Details, Activity, Settings
+     - Close behavior: Click X or Close button → `setProfileOpen(false)` + `setEditMode(false)`
+     - State management: All state managed in unified UsersContext
+     - No data loss: Dialog closes without auto-save unless user clicks "Save Changes"
 
 #### Data Formatting (3 items)
 
