@@ -16,7 +16,12 @@ export const revalidate = 30 // ISR: Revalidate every 30 seconds
 
 export const GET = withTenantContext(async (request: Request) => {
   const ctx = requireTenantContext()
-  const tenantId = ctx.tenantId ?? null
+  const tenantId = ctx.tenantId
+
+  if (!tenantId) {
+    return respond.badRequest('Tenant context is required')
+  }
+
   try {
     const ip = getClientIp(request as unknown as Request)
     const rl = await applyRateLimit(`admin-users-list:${ip}`, 240, 60_000)
@@ -254,7 +259,11 @@ export const GET = withTenantContext(async (request: Request) => {
  */
 export const POST = withTenantContext(async (request: NextRequest) => {
   const ctx = requireTenantContext()
-  const tenantId = ctx.tenantId ?? null
+  const tenantId = ctx.tenantId
+
+  if (!tenantId) {
+    return respond.badRequest('Tenant context is required')
+  }
 
   try {
     const postUserRole = ctx.role ?? ''
@@ -301,7 +310,7 @@ export const POST = withTenantContext(async (request: NextRequest) => {
     })
 
     
-    await AuditLogService.createAuditLog({ tenantId: tenantId!, action: 'user.create', userId: newUser.id, metadata: { name, email, role } })
+    await AuditLogService.createAuditLog({ tenantId, action: 'user.create', userId: newUser.id, metadata: { name, email, role } })
 
     return NextResponse.json(newUser, { status: 201 })
   } catch (error: any) {
@@ -317,7 +326,11 @@ export const POST = withTenantContext(async (request: NextRequest) => {
  */
 export const PUT = withTenantContext(async (request: NextRequest) => {
   const ctx = requireTenantContext()
-  const tenantId = ctx.tenantId ?? null
+  const tenantId = ctx.tenantId
+
+  if (!tenantId) {
+    return respond.badRequest('Tenant context is required')
+  }
 
   try {
     const putUserRole = ctx.role ?? ''
@@ -358,7 +371,7 @@ export const PUT = withTenantContext(async (request: NextRequest) => {
     })
 
     
-    await AuditLogService.createAuditLog({ tenantId: tenantId!, action: 'user.update', userId: updatedUser.id, metadata: { name, email, role } })
+    await AuditLogService.createAuditLog({ tenantId, action: 'user.update', userId: updatedUser.id, metadata: { name, email, role } })
 
     return NextResponse.json(updatedUser, { status: 200 })
   } catch (error: any) {
@@ -366,4 +379,3 @@ export const PUT = withTenantContext(async (request: NextRequest) => {
     return respond.serverError('An internal server error occurred.')
   }
 })
-
