@@ -56,7 +56,7 @@ export const GET = withTenantContext(async (request: NextRequest) => {
     })
 
     const total = await prisma.task.count({ where: tenantFilter(tenantId) })
-    const completed = await prisma.task.count({ where: { ...tenantFilter(tenantId), status: 'DONE' as any } })
+    const completed = await prisma.task.count({ where: { ...tenantFilter(tenantId), status: 'DONE' } })
 
     const byStatus = await prisma.task.groupBy({
       by: ['status'],
@@ -114,7 +114,7 @@ export const GET = withTenantContext(async (request: NextRequest) => {
 
     const dones = await prisma.task.findMany({
       select: { updatedAt: true },
-      where: { ...tenantFilter(tenantId), updatedAt: { gte: start }, status: 'DONE' as any }
+      where: { ...tenantFilter(tenantId), updatedAt: { gte: start }, status: 'DONE' }
     })
 
     const dayKey = (d: Date) => d.toISOString().slice(0, 10)

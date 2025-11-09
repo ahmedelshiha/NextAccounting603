@@ -29,14 +29,14 @@ export const GET = withTenantContext(async (request: NextRequest) => {
 
     const activeUsers = await prisma.user.count({
       where: {
-        status: 'ACTIVE',
+        availabilityStatus: 'AVAILABLE',
         ...(tenantFilter(tenantId) )
       }
     })
 
     const inactiveUsers = await prisma.user.count({
       where: {
-        status: 'INACTIVE',
+        availabilityStatus: 'UNAVAILABLE',
         ...(tenantFilter(tenantId) )
       }
     })

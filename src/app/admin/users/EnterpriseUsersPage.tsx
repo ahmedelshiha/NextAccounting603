@@ -42,13 +42,14 @@ const AdminTab = lazy(() => import('./components/tabs/AdminTab').then(m => ({ de
 export function EnterpriseUsersPage() {
   const [activeTab, setActiveTab] = useState<TabType>('dashboard')
   const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false)
-  // Performance: start render measure (ended in effects below)
-  performanceMetrics.startMeasure('admin-users-page:render')
+
 
   const context = useUsersContext()
 
   // Initialize tab from URL query (?tab=...) and apply role filter (?role=...)
   useEffect(() => {
+    // Performance: start render measure (ended in effects below)
+    performanceMetrics.startMeasure('admin-users-page:render')
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       const tab = params.get('tab') as TabType | null
