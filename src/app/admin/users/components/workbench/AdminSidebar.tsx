@@ -263,9 +263,19 @@ export default function AdminSidebar({
           </CollapsibleTrigger>
 
           <CollapsibleContent className="admin-sidebar-content-inner">
-            <div className="text-sm text-gray-600 p-3 bg-gray-100 rounded border border-gray-200">
-              <p className="font-medium mb-2">📊 Role Distribution & User Growth</p>
-              <p className="text-xs text-gray-500">Charts coming soon - role distribution, user growth, and activity insights will appear here.</p>
+            <div className="space-y-6">
+              <div>
+                <RoleDistributionChart
+                  data={roleDistributionData}
+                  loading={context.isLoading}
+                />
+              </div>
+              <div>
+                <UserGrowthChart
+                  data={userGrowthData}
+                  loading={context.isLoading}
+                />
+              </div>
             </div>
           </CollapsibleContent>
         </Collapsible>
