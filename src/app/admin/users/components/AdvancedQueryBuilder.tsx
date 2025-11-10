@@ -198,21 +198,19 @@ export function AdvancedQueryBuilder({
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ScrollArea className="h-32">
-                    <div className="space-y-2">
-                      {builtInTemplates.map((template) => (
-                        <Button
-                          key={template.id}
-                          variant="ghost"
-                          size="sm"
-                          className="w-full justify-start"
-                          onClick={() => loadTemplate(template.id)}
-                        >
-                          {template.name}
-                        </Button>
-                      ))}
-                    </div>
-                  </ScrollArea>
+                  <div className="h-32 overflow-y-auto space-y-2">
+                    {builtInTemplates.map((template) => (
+                      <Button
+                        key={template.id}
+                        variant="ghost"
+                        size="sm"
+                        className="w-full justify-start"
+                        onClick={() => loadTemplate(template.id)}
+                      >
+                        {template.name}
+                      </Button>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             )}
