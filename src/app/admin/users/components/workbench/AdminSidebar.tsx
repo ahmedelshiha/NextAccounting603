@@ -85,7 +85,7 @@ export default function AdminSidebar({
     <div className="admin-sidebar-wrapper">
       {/* Header with close button (mobile) */}
       <div className="admin-sidebar-header">
-        <h3 className="text-lg font-semibold text-gray-900">Filters & Analytics</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Analytics</h3>
         <Button
           variant="ghost"
           size="sm"
