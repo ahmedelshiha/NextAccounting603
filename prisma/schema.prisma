@@ -347,6 +347,7 @@ model Tenant {
   userPaymentMethods    UserPaymentMethod[]        @relation("UserPaymentMethods")
   bankingConnections    BankingConnection[]        @relation("BankingConnections")
   bankingTransactions   BankingTransaction[]       @relation("BankingTransactions")
+  taxFilings            TaxFiling[]                @relation("TaxFilings")
 
   @@index([status])
 }
