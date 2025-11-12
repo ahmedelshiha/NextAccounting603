@@ -35,7 +35,7 @@ declare global {
   }
 }
 
-export function ClientLayout({ children, session, orgName, orgLogoUrl, contactEmail, contactPhone, legalLinks }: ClientLayoutProps) {
+export function ClientLayout({ children, session, orgName, orgLogoUrl, contactEmail, contactPhone, legalLinks, locale = 'en' }: ClientLayoutProps) {
   const [uiOrgName, setUiOrgName] = React.useState(orgName)
   const [uiOrgLogoUrl, setUiOrgLogoUrl] = React.useState(orgLogoUrl)
   const [uiContactEmail, setUiContactEmail] = React.useState(contactEmail)
