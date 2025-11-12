@@ -282,7 +282,7 @@ Deliverables:
 - ✅ About section with version info, features, licenses, and legal links
 - ✅ Unit tests and accessibility verification (ARIA, keyboard nav, RTL)
 
-## Phase 3 �� Documents Vault
+## Phase 3 — Documents Vault
 **Status: ✅ COMPLETE (100% complete)**
 
 Epic: DOC-3 Vault
@@ -330,23 +330,30 @@ Epic: DOC-3 Vault
 - Comprehensive E-signature service tests (337 lines)
 
 ## Phase 4 — Messaging & Support
-**Status: ⚠️ LARGELY IMPLEMENTED (70% complete)**
+**Status: ⚠️ MOSTLY IMPLEMENTED (80% complete)**
 
 Epic: MSG-4 Cases & chat
 
 **Implemented** ✅:
-- Real-time chat for portal users (src/app/api/portal/chat/route.ts)
-- Real-time chat for admin (src/app/api/admin/chat/route.ts)
-- Live chat widget (src/components/portal/LiveChatWidget.tsx)
-- Admin chat console (src/components/admin/chat/AdminChatConsole.tsx)
-- Chat message persistence (prisma.ChatMessage model)
-- Chat backlog and broadcast (src/lib/chat.ts)
-- Support tickets UI (src/components/portal/AccountCenter/SupportSection.tsx)
-- Real-time service integration (pluggable)
+- ✅ Real-time chat for portal users (src/app/api/portal/chat/route.ts)
+- ✅ Real-time chat for admin (src/app/api/admin/chat/route.ts)
+- ✅ Live chat widget (src/components/portal/LiveChatWidget.tsx)
+- ✅ Admin chat console (src/components/admin/chat/AdminChatConsole.tsx)
+- ✅ Chat message persistence (prisma.ChatMessage model)
+- ✅ Chat backlog and broadcast (src/lib/chat.ts)
+- ✅ Support tickets UI (src/components/portal/AccountCenter/SupportSection.tsx)
+- ✅ Real-time service integration (pluggable)
+- ✅ **Phase 4.1**: Support tickets database persistence (SupportTicket model)
+- ✅ **Phase 4.1**: Support ticket comments (SupportTicketComment model)
+- ✅ **Phase 4.1**: Support ticket status history (SupportTicketStatusHistory model)
+- ✅ **Phase 4.1**: Support ticket list API with filters (GET /api/support/tickets)
+- ✅ **Phase 4.1**: Support ticket creation API (POST /api/support/tickets)
+- ✅ **Phase 4.1**: Support ticket detail API (GET /api/support/tickets/[id])
+- ✅ **Phase 4.1**: Support ticket update API (PATCH /api/support/tickets/[id])
+- ✅ **Phase 4.1**: Support ticket delete API (DELETE /api/support/tickets/[id])
+- ✅ **Phase 4.1**: Support ticket comments API (POST/GET /api/support/tickets/[id]/comments)
 
 **Pending** ⏳:
-- Support tickets persistence to database
-- Support ticket lifecycle (assignment, comments, SLAs)
 - Knowledge Base CRUD API and content management
 - Advanced case management and routing
 - SLA timers and escalation workflows
