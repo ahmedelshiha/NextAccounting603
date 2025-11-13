@@ -1,7 +1,7 @@
 
 import prisma from "@/lib/prisma";
 import { logger } from "@/lib/logger";
-import { getCountry } from "@/lib/registries/countries";
+import { getCountry, CountryCode } from "@/lib/registries/countries";
 import { Redis } from "@upstash/redis";
 
 
@@ -166,7 +166,7 @@ export async function verifyEntityRegistrations(
     for (const registration of entity.registrations) {
       try {
         // Validate identifier format based on country
-        const country = getCountry(entity.country);
+        const country = getCountry(entity.country as CountryCode);
         const validator = country?.validators[registration.type];
 
         if (validator && validator.validate(registration.value)) {
